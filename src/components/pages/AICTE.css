@@ -1,0 +1,30 @@
+.AICTE p{
+    font-size: 1.5rem;
+}
+.AICTE h1{
+    background-color: #439A97;
+    color: white;
+}
+.AICTE-Container{
+    background-color: #CBEDD5;
+}
+.AICTE{
+    background-color: #C0EEE4;
+}
+.sub-underline{
+    height: 4px;
+    width: 4rem;
+    background-color: rgb(44, 22, 243);
+    border-radius: 4px;
+  }
+  .AICTE img{
+    margin: 1rem;
+    width: 80%;
+    height : 70%;
+}
+.staffdetail{
+    line-break: 2;
+}
+.AICTE h5{
+    padding-bottom: 2rem;
+}

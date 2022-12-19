@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import Contact from './components/pages/Contact';
+import About from './components/pages/About';
+import EDP from './components/pages/EDP';
+import Events from './components/pages/Events';
+import AICTELAB from './components/pages/AICTELAB';
+import Navbar from './components/inc/Navbar';
+import Footer from './components/inc/footer';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <BrowserRouter>
+    <Navbar/>
+    <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/about' element={<About />} />
+    <Route path='/contact' element={<Contact />}/>
+    <Route path='/edp' element={<EDP />}/>
+    <Route path='/events' element={<Events />}/>
+    <Route path='/lab' element={<AICTELAB />}/>
+    </Routes>
+    <Footer />
+   </BrowserRouter>
   );
 }
 
