@@ -5,7 +5,13 @@ import MV from './includes/MV';
 const Home = () => {
   return (
     <div>
-      <Slider />
+      <Slider id="HomePageCarousel"
+          imgsrc1="./HomePageCarousel/asset 8.jpeg"
+          imgsrc2="./HomePageCarousel/asset 5.jpeg"
+          imgsrc3="./HomePageCarousel/asset 11.jpeg"
+          imgsrc4="./HomePageCarousel/asset 12.jpeg"
+          imgsrc5="./HomePageCarousel/asset 13.jpeg"
+        />
       <section className='py-5'>
         <div className='container'>
             <div className='row'>

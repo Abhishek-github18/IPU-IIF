@@ -2,7 +2,8 @@ import React from 'react'
 import './AICTE.css';
 import IdeaLabTeam from "../images/asset 2.jpeg" 
 import PuneFdeComp from "../images/asset 4.jpeg"
-import AicteCarousel from './includes/AicteCarousel'
+import Slider from '../inc/Slider';
+
 const AICTELAB = () => {
   return (
 
@@ -82,7 +83,13 @@ const AICTELAB = () => {
             <p>
             Prof. Amit Prakash Singh given the vote of thanks to all faculty attended the meeting. Prof. Singh also extended thanks to Dr. Saxena for sparing a time for visiting the university.
             </p>
-            <AicteCarousel />
+            <Slider id = "AicteCarousel"
+                    imgsrc1 = "/LabVisit/asset 14.jpeg"
+                    imgsrc2 = "/LabVisit/asset 15.jpeg"
+                    imgsrc3 = "/LabVisit/asset 16.jpeg"
+                    imgsrc4 = "/LabVisit/asset 17.jpeg"
+                    imgsrc5 = "/LabVisit/asset 18.jpeg"
+            />
         </div>
       </section>
   )

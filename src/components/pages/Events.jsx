@@ -3,8 +3,6 @@ import Research from "../images/ValueAddedWorkShopOnReasearch.jpeg"
 import Business from "../images/StartNewBusiness.jpeg"
 import HashTech from "../images/HashTech.jpeg"
 import EventCarousel from './includes/EventCarousel'
-import EventCarousel1 from './includes/EventCarousel1'
-import EventCarousel2 from './includes/EventCarousel2'
 
 const Events = () => {
   return (
@@ -57,21 +55,36 @@ const Events = () => {
                 <div className='col-md-4'>
                     <div className='card'>
                         <div className='card-body'>
-                            <EventCarousel/>
+                            <EventCarousel id="EventCarousel1"
+                                imgsrc1="./EventCarouselImage/asset 7.jpeg"
+                                imgsrc2="./EventCarouselImage/asset 8.jpeg"
+                                imgsrc3="./EventCarouselImage/asset 11.jpeg"
+                                title="ONE DAY WORKSHOP ON POTENTIAL OF INNOVATION AND START-UP IN INDIA"
+                                date="22-September 2022" />
                         </div>
                     </div>                 
                 </div>
                 <div className='col-md-4'>
                     <div className='card'>
                         <div className='card-body'>
-                            <EventCarousel1/>
+                            <EventCarousel id="EventCarousel2"
+                                imgsrc1="./EventCarouselImage/asset 24.jpeg"
+                                imgsrc2="./EventCarouselImage/asset 25.jpeg"
+                                imgsrc3="./EventCarouselImage/asset 26.jpeg"
+                                title="INTRODUCATION TO MATLAB: INSTALLATION AND FEATURES"
+                                date="1-October 2022" />
                         </div>
                     </div>                 
                 </div>
                 <div className='col-md-4'>
                     <div className='card'>
                         <div className='card-body'>
-                            <EventCarousel2/>
+                            <EventCarousel id="EventCarousel3"
+                                imgsrc1="./EventCarouselImage/asset 29.png"
+                                imgsrc2="./EventCarouselImage/asset 30.png"
+                                imgsrc3="./EventCarouselImage/asset 31.png"
+                                title="INTRODUCTION TO IEEE XPLORE THROUGH ONLINE MODE"
+                                date="18-September 2022" />
                         </div>
                     </div>                 
                 </div>
