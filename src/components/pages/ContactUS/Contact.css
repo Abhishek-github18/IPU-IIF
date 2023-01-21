@@ -1,10 +1,23 @@
 .AboutContact {
-  text-align: center;
-  font-size: 4rem;
+  /* text-align: center; */
+  font-size: 2rem;
   padding-bottom: 4rem;
-  background-color: rgb(27, 176, 161);
+  background-color: #F1F6F9;
 }
 
+.contact-us-form{
+  background-color: #F0F5F9;
+  height: 740px;
+}
+.ideaheading{
+  display: inline;
+  background-color: #9BA4B4;
+  color: rgba(0, 0, 0, 0.94);
+  font-size: 3rem;
+  text-align: center;
+  /* margin-top: 2rem; */
+
+}
 input,
 textarea {
   max-width: 50rem;

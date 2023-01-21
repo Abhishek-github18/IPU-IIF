@@ -1,19 +1,27 @@
 import "./App.css";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
-import Contact from "./components/pages/Contact";
+import Contact from "./components/pages/ContactUS/Contact";
 import About from "./components/pages/About";
 import EDP from "./components/pages/EDP";
 import Events from "./components/pages/Events";
 import AICTELAB from "./components/pages/AICTELAB";
-import Navbar from "./components/inc/Navbar";
-import Footer from "./components/inc/footer";
-import Notices from "./components/pages/Notices";
-import Patents from "./components/pages/Patents";
+import Notices from "./components/pages/Notice/Notices";
+import Patents from "./components/pages/Patent/Patents";
+import AdminLogin from "./components/pages/adminlogin";
+import RegisterAdmin from "./components/pages/registernewadmin/registerAdmin";
+import AddEvent from "./components/pages/addEvent/addEvent";
+import AddNotices from "./components/pages/AddNotice/AddNotice";
+import AddPatent from "./components/pages/AddPatent/AddPatent";
+import Contact01 from "./components/pages/ContactUS/Contact01";
+import Query from "./components/pages/Query/query";
+
+
 function App() {
+  let userToken = localStorage.getItem('user_token');
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -23,8 +31,14 @@ function App() {
         <Route path="/lab" element={<AICTELAB />} />
         <Route path="/patent" element={<Patents />} />
         <Route path="/notices" element={<Notices />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/register" element={<RegisterAdmin />} />
+        {/* <Route path="/addevents" element={<AddEvent />} /> */}
+        {userToken ?(<Route path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
+        {userToken ?(<Route path="/addnotices" element={<AddNotices />} />):(<Route path="/addevents" element={<Events />} />) }
+        {userToken ?(<Route path="/addpatents" element={<AddPatent /> } />):(<Route path="/addevents" element={<Events />} />)}
+        {userToken ?(<Route path="/queries" element={<Query />} />) : (<Route path="/addevents" element={<Events />} />)}
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }

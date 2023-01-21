@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-
+import GGSIPU from "../Navbar/GGSIPU-logo.png";
+//navbar design :- bg-dark navbar-dark
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark py-4">
-      <div className="container">
+    <nav className="navbar navbar-expand-lg sticky-top   py-4" style={{backgroundColor: "#e3f2fd"}}>
+    
+      <div className="container navbarContent">
+        
         <Link className="navbar-brand" to="/">
+        <div className="navbar-main-ipu-image-container">
+          <img src={GGSIPU} alt="" className="navbar-image-ipu"/>
+        </div>
           <emp className="navbar-brand-name">IPU-IIF</emp>
         </Link>
         <button
@@ -41,6 +47,7 @@ const Navbar = () => {
                 className="nav-link active"
                 href="https://www.sih.gov.in/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Smart India Hackathon
               </a>

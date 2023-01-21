@@ -3,7 +3,7 @@ import "./Slider.css";
 
 const Slider = (prop) => {
   const carouselId = "#" + prop.id;
-  console.log(carouselId);
+  // console.log(carouselId);
   return (
     <div
       id={prop.id}

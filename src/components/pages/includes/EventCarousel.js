@@ -2,7 +2,7 @@ import React from 'react'
 import './EventCarousel.css';
 const EventCarousel = (prop) => {
   const carouselID = "#"+prop.id;
-    console.log(carouselID);
+    // console.log(carouselID);
     
     return (
       <div className='MoreEventCarousel row'>
