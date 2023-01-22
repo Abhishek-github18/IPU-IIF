@@ -57,7 +57,7 @@ const onSubmit = ()=>{
             className="form-control"
             placeholder="Email address"
             required
-            autofocus
+            autoFocus
             onChange={handleChange}
           />
           {/* <label for="inputPassword" class="sr-only">

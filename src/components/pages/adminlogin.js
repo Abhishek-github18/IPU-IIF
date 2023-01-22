@@ -64,7 +64,7 @@ const adminlogin = () => {
           required
           value={user.email}
           onChange={handleChange}
-          autofocus
+          autoFocus
         />
         {/* <label for="inputPassword" class="sr-only">
           Password
