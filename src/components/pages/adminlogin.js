@@ -5,9 +5,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const adminlogin = () => {
+const adminlogin = (prop) => {
   const [currentyear, setcurrentyear] = useState(2023);
   const [user, setuser] = useState({});
+  
   const navigate = useNavigate();
   // console.log(currentyear);
 
@@ -24,6 +25,8 @@ const adminlogin = () => {
         // alert(JSON.stringify(res.data));
         // console.log(res.data);
         localStorage.setItem("user_token", res.data);
+        prop.setUserToken(res.data);
+
         // setLoginUser(res.data);
         navigate("/adminlandingpage");
       })

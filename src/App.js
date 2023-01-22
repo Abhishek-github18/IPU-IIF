@@ -17,10 +17,11 @@ import AddPatent from "./components/pages/AddPatent/AddPatent";
 // import Contact01 from "./components/pages/ContactUS/Contact01";
 import Query from "./components/pages/Query/query";
 import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPage";
-
+import { useState } from "react";
 
 function App() {
-  let userToken = localStorage.getItem('user_token');
+  const [userToken, setToken] = useState("");
+  // let userToken = localStorage.getItem('user_token');
   console.log(userToken);
   return (
     <BrowserRouter>
@@ -33,7 +34,7 @@ function App() {
         <Route path="/lab" element={<AICTELAB />} />
         <Route path="/patent" element={<Patents />} />
         <Route path="/notices" element={<Notices />} />
-        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/login" element={<AdminLogin setUserToken={setToken} />} />
         <Route path="/register" element={<RegisterAdmin />} />
         {/* <Route path="/addevents" element={<AddEvent />} /> */}
         {userToken ?(<Route  path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
