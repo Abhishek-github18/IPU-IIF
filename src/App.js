@@ -21,6 +21,7 @@ import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPa
 
 function App() {
   let userToken = localStorage.getItem('user_token');
+  console.log(userToken);
   return (
     <BrowserRouter>
       <Routes>
@@ -39,7 +40,7 @@ function App() {
         {userToken ?(<Route path="/addnotices" element={<AddNotices />} />):(<Route path="/addevents" element={<Events />} />) }
         {userToken ?(<Route key="1" path="/addpatents" element={<AddPatent /> } />):(<Route key="2" path="/addevents" element={<Events />} />)}
         {userToken ?(<Route path="/queries" element={<Query />} />) : (<Route path="/addevents" element={<Events />} />)}
-        {userToken ? (<Route path="/adminlandingpage" element={<AdminLandingPage/>} />) : (<Route path="/adminlandingpage" element={<Home />}/>)}
+        {userToken ?(<Route path="/adminlandingpage" element={<AdminLandingPage/>} />):(<Route path="/adminlandingpage" element={<Home />}/>)}
       </Routes>
     </BrowserRouter>
   );
