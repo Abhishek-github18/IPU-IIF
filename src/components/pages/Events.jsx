@@ -33,7 +33,7 @@ const Events = () => {
         {eventDetials &&
           eventDetials.map((e) => (
             <EventCard
-              id={e.id}
+              key={`key${e._id}`}
               imgsrc={e.image}
               title={e.title}
               content={e.content}

@@ -43,7 +43,7 @@ const query = () => {
               {querydata &&
                 querydata.map((data) => (
                   <QueryStructure
-                  id={data.id}
+               key={`key${data._id}`}
                     name={data.name}
                     email={data.email}
                     message={data.message}

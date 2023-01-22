@@ -47,7 +47,7 @@ const Contact = () => {
                   title="iframeContact"
                   // allowfullscreen=""
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
               <div className="col-md-6 contact-us-form">
@@ -62,7 +62,7 @@ const Contact = () => {
                     // method="POST"
                     // action={submitHandler}
                     >
-                      <label for="">Name</label>
+                      <label >Name</label>
                       <input
                         type="text"
                         name="name"
@@ -70,7 +70,7 @@ const Contact = () => {
                         className="form-control mb-3"
                         onChange={handleChange}
                       />
-                      <label for="">Email</label>
+                      <label >Email</label>
                       <input
                         type="mail"
                         name="email"
@@ -78,7 +78,7 @@ const Contact = () => {
                         className="form-control mb-3"
                         onChange={handleChange}
                       />
-                      <label for="">Message</label>
+                      <label >Message</label>
                       <textarea
                         rows="10"
                         name="message"

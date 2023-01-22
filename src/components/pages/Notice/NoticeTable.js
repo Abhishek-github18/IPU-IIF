@@ -7,7 +7,7 @@ const NoticeTable = (prop) => {
     
     <tr>
       <td>
-        <a key={prop.id} href={prop.href} target="_blank" rel="noopener noreferrer">
+        <a href={prop.href} target="_blank" rel="noopener noreferrer">
           {prop.title}
         </a>
       </td>

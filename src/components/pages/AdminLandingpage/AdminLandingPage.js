@@ -1,8 +1,8 @@
 import React from "react";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
-import WelcomeAdmin from "../AdminLandingpage/17973908.jpg";
+// import WelcomeAdmin from "../AdminLandingpage/17973908.jpg";
 import "./AdminLandingPage.css";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const AdminLandingPage = () => {
   return (

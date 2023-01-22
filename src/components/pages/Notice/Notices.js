@@ -39,7 +39,7 @@ const Notices = () => {
               {noticedata &&
                 noticedata.map((e) => (
                   <NoticeTable
-                    id={e.id}
+                    key={`key${e._id}`}
                     href={e.pdfaddress}
                     title={e.title}
                     count={++count}

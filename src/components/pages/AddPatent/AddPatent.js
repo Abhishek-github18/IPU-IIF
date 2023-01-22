@@ -72,7 +72,7 @@ const AddPatent = () => {
               {patentgrantdata &&
                 patentgrantdata.map((data) => (
                   <PatentRowStructure
-                    id={data._id}
+                    key={`key${data._id}`}
                     date={data.patentGrantDate}
                     no={data.patentNo}
                     name={data.patentee}

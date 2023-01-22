@@ -62,7 +62,7 @@ const addEvent = () => {
         {eventDetials &&
           eventDetials.map((e) => (
             <EventCard
-              id={e.id}
+              key={`key${e._id}`}
               imgsrc={e.image}
               // contentType={e.img.contentType}
               title={e.title}

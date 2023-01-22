@@ -4,7 +4,7 @@ import "./EventCard.css";
 export const EventCard = (prop) => {
   return (
    
-    <div className="col-md-3 col-lg-4" key={prop.id}>
+    <div className="col-md-3 col-lg-4" >
       <div className="card mb-3" >
         <div className="image-container-event" >
         <img
