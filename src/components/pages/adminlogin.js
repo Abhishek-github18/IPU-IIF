@@ -3,6 +3,7 @@ import "./adminlogin.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const adminlogin = () => {
   const [currentyear, setcurrentyear] = useState(2023);
@@ -96,7 +97,7 @@ const adminlogin = () => {
         </button>
         <p className="mt-3">
           Not a member?
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
         </p>
         <p className=" mb-3 text-muted">&copy; {currentyear}</p>
       </div>
