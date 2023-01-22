@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import "./AddPatent.css";
 import PatentRowStructure from "../Patent/PatentRowStructure";
@@ -14,7 +14,7 @@ const AddPatent = () => {
 
   const fetchPatentGrantData = async () => {
     const response = await axios.get("https://ipu-iif.onrender.com/patents");
-    // console.log(response.data);
+    console.log(response.data);
     setpatentgrantdata(response.data);
   };
 
@@ -43,8 +43,8 @@ const AddPatent = () => {
     axios
       .post("https://ipu-iif.onrender.com/addpatents", patent, config)
       .then((res) => {
-        // console.log(res.data);
-        navigate("/addevents");
+        console.log(res.data);
+        navigate("/adminlandingpage");
       })
       .catch((err) => {
         alert(err.response.data);
@@ -58,10 +58,10 @@ const AddPatent = () => {
         <h2 className="patentheading"> PATENTS </h2>
         <div className="patentgranted table-responsive">
           <h2>LIST OF PATENT GRANTED TO GGSIPU</h2>
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
-              <tr class="bg-dark tableheading">
-                <th scope="col" class="bg-dark tableheading"></th>
+              <tr className="bg-dark tableheading">
+                <th scope="col" className="bg-dark tableheading"></th>
                 <th scope="col">Patent Grant Date</th>
                 <th scope="col">Patent No.</th>
                 <th scope="col">Patentee Name</th>
@@ -72,6 +72,7 @@ const AddPatent = () => {
               {patentgrantdata &&
                 patentgrantdata.map((data) => (
                   <PatentRowStructure
+                    id={data._id}
                     date={data.patentGrantDate}
                     no={data.patentNo}
                     name={data.patentee}
@@ -84,7 +85,7 @@ const AddPatent = () => {
         </div>
       </div>
       <hr />
-      <div class="col-md-6 offset-md-3 mt-5 container">
+      <div className="col-md-6 offset-md-3 mt-5 container">
         <h2>Add new Patent granted to GGSIPU</h2>
         <div
         // accept-charset="UTF-8"
@@ -92,46 +93,46 @@ const AddPatent = () => {
         // enctype="multipart/form-data"
         //   target="_blank"
         >
-          <div class="form-group">
-            <label for="patentName" className="mb-1">
+          <div className="form-group">
+            <label htmlFor="patentName" className="mb-1">
               Patentee Name
             </label>
             <input
               type="text"
               name="patentee"
-              class="form-control"
+              className="form-control"
               id="patentee"
               placeholder="Enter the Patentee Name "
               required="required"
               onChange={handleChange}
             />
           </div>
-          <div class="form-group mt-3">
-            <label for="" required="required" className="mb-1">
+          <div className="form-group mt-3">
+            <label  required="required" className="mb-1">
               Patent No.
             </label>
             <input
               type="text"
               name="patentNo"
-              class="form-control"
+              className="form-control"
               id=""
               placeholder="It would on the certificate"
               onChange={handleChange}
             />
           </div>
-          <div class="form-group mt-3">
+          <div className="form-group mt-3">
             <label className="mb-1">Patent Grant Date</label>
             <input
               type="text"
               name="patentGrantDate"
-              class="form-control"
+              className="form-control"
               placeholder="Date Format : Date-Month-Year"
               onChange={handleChange}
             />
           </div>
           <hr />
-          <div class="form-group mt-3 mt-3" className="mb-1">
-            <label class="mr-2">Upload a certificate (pdf format) :</label>
+          <div className="form-group mt-3 mt-3 mb-1">
+            <label className="mr-2">Upload a certificate (pdf format) :</label>
             <input
               type="file"
               name="certificate"
@@ -139,7 +140,7 @@ const AddPatent = () => {
             />
           </div>
           <hr />
-          <button type="submit" class="btn btn-primary" onClick={submitPatent}>
+          <button type="submit" className="btn btn-primary" onClick={submitPatent}>
             Submit
           </button>
         </div>

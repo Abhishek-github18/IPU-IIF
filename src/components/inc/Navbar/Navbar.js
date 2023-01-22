@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="navbar-main-ipu-image-container">
           <img src={GGSIPU} alt="" className="navbar-image-ipu"/>
         </div>
-          <emp className="navbar-brand-name">IPU-IIF</emp>
+          <i className="navbar-brand-name">IPU-IIF</i>
         </Link>
         <button
           className="navbar-toggler"

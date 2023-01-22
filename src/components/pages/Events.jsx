@@ -1,8 +1,4 @@
 import React from "react";
-import Research from "../images/ValueAddedWorkShopOnReasearch.jpeg";
-import Business from "../images/StartNewBusiness.jpeg";
-import HashTech from "../images/HashTech.jpeg";
-import EventCarousel from "./includes/EventCarousel";
 import { EventCard } from "../inc/EventCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -18,6 +14,7 @@ const Events = () => {
     const response = await axios.get("https://ipu-iif.onrender.com/events");
 
     seteventDetials(response.data);
+    console.log(response.data);
     // console.log(eventDetials);
   };
   useEffect(() => {
@@ -25,17 +22,19 @@ const Events = () => {
     // eslint-disable-next-line
   }, []);
 
+  // Each child in a list should have a unique "key" prop. Check the render method of `Events`
+
+  
   return (
     <div className="headerFooter eventDivision">
       <Navbar />
       <h1>EVENTS</h1>
-      <div class="row container">
+      <div className="row container">
         {eventDetials &&
           eventDetials.map((e) => (
             <EventCard
               id={e.id}
               imgsrc={e.image}
-              // contentType={e.img.contentType}
               title={e.title}
               content={e.content}
               date={e.date}

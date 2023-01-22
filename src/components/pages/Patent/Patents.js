@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Patents = () => {
   const [patentgrantdata, setpatentgrantdata] = useState();
-  const [patentpublisheddata, setpatentpublisheddata] = useState();
+  // const [patentpublisheddata, setpatentpublisheddata] = useState();
   let serialNo = 0;
 
   const fetchPatentGrantData = async () => {
@@ -28,10 +28,10 @@ const Patents = () => {
         <h2 className="patentheading"> PATENTS </h2>
         <div className="patentgranted table-responsive">
           <h2>LIST OF PATENT GRANTED TO GGSIPU</h2>
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
-              <tr class="bg-dark tableheading">
-                <th scope="col" class="bg-dark tableheading"></th>
+              <tr className="bg-dark tableheading">
+                <th scope="col" className="bg-dark tableheading"></th>
                 <th scope="col">Patent Grant Date</th>
                 <th scope="col">Patent No.</th>
                 <th scope="col">Patentee Name</th>
@@ -41,13 +41,14 @@ const Patents = () => {
             <tbody>
               {patentgrantdata &&
                 patentgrantdata.map((data) => (
-                  <PatentRowStructure
-                    date={data.patentGrantDate}
-                    no={data.patentNo}
-                    name={data.patentee}
-                    href={data.certificate}
-                    count={++serialNo}
-                  />
+                    <PatentRowStructure
+                      id={data._id}
+                      date={data.patentGrantDate}
+                      no={data.patentNo}
+                      name={data.patentee}
+                      href={data.certificate}
+                      count={++serialNo}
+                    />
                 ))}
             </tbody>
           </table>

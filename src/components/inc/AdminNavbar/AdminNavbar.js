@@ -7,11 +7,11 @@ const AdminNavbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg sticky-top  py-4" style={{backgroundColor: "#e3f2fd"}}>
       <div className="container navbarContent">
-        <Link className="navbar-brand" to="/addevents">
+        <Link className="navbar-brand" to="/adminlandingpage">
         <div className="navbar-main-ipu-image-container">
           <img src={GGSIPU} alt="" className="navbar-image-ipu"/>
         </div>
-          <emp className="navbar-brand-name">IPU-IIF</emp>
+          <i className="navbar-brand-name">IPU-IIF</i>
         </Link>
         <button
           className="navbar-toggler"

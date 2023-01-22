@@ -14,8 +14,9 @@ import RegisterAdmin from "./components/pages/registernewadmin/registerAdmin";
 import AddEvent from "./components/pages/addEvent/addEvent";
 import AddNotices from "./components/pages/AddNotice/AddNotice";
 import AddPatent from "./components/pages/AddPatent/AddPatent";
-import Contact01 from "./components/pages/ContactUS/Contact01";
+// import Contact01 from "./components/pages/ContactUS/Contact01";
 import Query from "./components/pages/Query/query";
+import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPage";
 
 
 function App() {
@@ -34,10 +35,11 @@ function App() {
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/register" element={<RegisterAdmin />} />
         {/* <Route path="/addevents" element={<AddEvent />} /> */}
-        {userToken ?(<Route path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
+        {userToken ?(<Route  path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
         {userToken ?(<Route path="/addnotices" element={<AddNotices />} />):(<Route path="/addevents" element={<Events />} />) }
-        {userToken ?(<Route path="/addpatents" element={<AddPatent /> } />):(<Route path="/addevents" element={<Events />} />)}
+        {userToken ?(<Route key="1" path="/addpatents" element={<AddPatent /> } />):(<Route key="2" path="/addevents" element={<Events />} />)}
         {userToken ?(<Route path="/queries" element={<Query />} />) : (<Route path="/addevents" element={<Events />} />)}
+        {userToken ? (<Route path="/adminlandingpage" element={<AdminLandingPage/>} />) : (<Route path="/adminlandingpage" element={<Home />}/>)}
       </Routes>
     </BrowserRouter>
   );

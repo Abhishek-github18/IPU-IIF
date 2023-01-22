@@ -24,7 +24,7 @@ const adminlogin = () => {
         // console.log(res.data);
         localStorage.setItem("user_token", res.data);
         // setLoginUser(res.data);
-        navigate("/addevents");
+        navigate("/adminlandingpage");
       })
       .catch((err) => {
         alert(err.response.data);
@@ -41,23 +41,24 @@ const adminlogin = () => {
   console.log(currentyear);
   return (
     <div className="text-center mt-5">
-      <div class="form-signin">
+      <div className="form-signin">
         <div className="img-container">
           <img
             className="iifimage"
             src={process.env.PUBLIC_URL + "/IPU-IIF.png"}
             // width="100"
             // height="100"
+            alt=""
           />
         </div>
-        <h2 class="m-3 font-weight-normal">Please sign in</h2>
+        <h2 className="m-3 font-weight-normal">Please sign in</h2>
         {/* <label for="inputEmail" className="sr-only sr-only-focusable">
           Email address
         </label> */}
         <input
           type="email"
           id="inputEmail"
-          class="form-control"
+          className="form-control"
           name="email"
           placeholder="Email address"
           required
@@ -71,7 +72,7 @@ const adminlogin = () => {
         <input
           type="password"
           id="inputPassword"
-          class="form-control"
+          className="form-control"
           name="password"
           placeholder="Password"
           value={user.password}
@@ -87,7 +88,7 @@ const adminlogin = () => {
       </div> */}
 
         <button
-          class="btn btn-lg btn-primary btn-block"
+          className="btn btn-lg btn-primary btn-block"
           type="submit"
           onClick={login}
         >
@@ -97,7 +98,7 @@ const adminlogin = () => {
           Not a member?
           <a href="/register">Register</a>
         </p>
-        <p class=" mb-3 text-muted">&copy; {currentyear}</p>
+        <p className=" mb-3 text-muted">&copy; {currentyear}</p>
       </div>
     </div>
   );

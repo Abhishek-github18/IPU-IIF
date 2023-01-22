@@ -36,16 +36,17 @@ const onSubmit = ()=>{
   return (
     <div>
       <div className="text-center mt-5">
-        <div class="form-signin" >
+        <div className="form-signin" >
           <div className="img-container">
             <img
               className="iifimage"
               src={process.env.PUBLIC_URL + "/IPU-IIF.png"}
               // width="100"
               // height="100"
+              alt=""
             />
           </div>
-          <h2 class="m-3 font-weight-normal">Please Register</h2>
+          <h2 className="m-3 font-weight-normal">Please Register</h2>
           {/* <label for="inputEmail" className="sr-only sr-only-focusable">
           Email address
         </label> */}
@@ -66,7 +67,7 @@ const onSubmit = ()=>{
             type="password"
             id="inputPassword"
             name="password"
-            class="form-control"
+            className="form-control"
             placeholder="Password"
             required
             onChange={handleChange}
@@ -84,10 +85,10 @@ const onSubmit = ()=>{
           <input type="checkbox" value="remember-me" /> 
         </label>
       </div> */}
-          <button class="mb-2 btn btn-lg btn-primary btn-block" type="submit" onClick={onSubmit}>
+          <button className="mb-2 btn btn-lg btn-primary btn-block" type="submit" onClick={onSubmit}>
             Register
           </button>
-          <p class=" mb-3 text-muted">&copy; {currentyear}</p>
+          <p className=" mb-3 text-muted">&copy; {currentyear}</p>
         </div>
       </div>
     </div>

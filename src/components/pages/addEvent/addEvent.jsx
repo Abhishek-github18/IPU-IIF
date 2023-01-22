@@ -1,5 +1,5 @@
 import React from "react";
-import Events from "../Events";
+// import Events from "../Events";
 import "./addEvent.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -36,7 +36,7 @@ const addEvent = () => {
       .then((res) => {
         // console.log(res.data);
         // alert(res.data);
-        navigate("/addnotices");
+        navigate("/adminlandingpage");
       })
       .catch((err) => {
         alert(err.response.data);
@@ -58,7 +58,7 @@ const addEvent = () => {
     <div>
       <AdminNavbar />
       <h1>EVENTS</h1>
-      <div class="row container">
+      <div className="row container">
         {eventDetials &&
           eventDetials.map((e) => (
             <EventCard
@@ -73,7 +73,7 @@ const addEvent = () => {
       </div>
       <hr />
       <h2 className="text-center">Add new Event Details</h2>
-      <div class="col-md-6 offset-md-3 mt-5">
+      <div className="col-md-6 offset-md-3 mt-5">
         <div
         // accept-charset="UTF-8"
         //   action="/addevents"
@@ -81,23 +81,23 @@ const addEvent = () => {
         // enctype="multipart/form-data"
         //   target="_blank"
         >
-          <div class="form-group mb-2">
-            <label for="exampleInputName" className="mb-1">
+          <div className="form-group mb-2">
+            <label htmlFor="exampleInputName" className="mb-1">
               Title
             </label>
             <input
               type="text"
               name="title"
-              class="form-control"
+              className="form-control"
               id="exampleInputName"
               placeholder="Enter the title and it must be unique"
               required="required"
               onChange={handleChange}
             />
           </div>
-          <div class="form-group mb-2">
+          <div className="form-group mb-2">
             <label
-              for="exampleInputEmail1"
+              htmlFor="exampleInputEmail1"
               required="required"
               className="mb-1"
             >
@@ -106,28 +106,28 @@ const addEvent = () => {
             <input
               type="text"
               name="content"
-              class="form-control"
+              className="form-control"
               id="exampleInputEmail1"
               onChange={handleChange}
               placeholder="Enter the description about event, keep it short max 50 words"
             />
           </div>
-          <div class="form-group mb-2">
-            <label for="exampleFormControlSelect1" className="mb-1">
+          <div className="form-group mb-2">
+            <label htmlFor="exampleFormControlSelect1" className="mb-1">
               Date:
             </label>
             <input
               type="text"
               name="date"
-              class="form-control"
+              className="form-control"
               onChange={handleChange}
               id="exampleInputEmail1"
               placeholder="Date Format : Date-Month-Year"
             />
           </div>
           <hr />
-          <div class="form-group mt-3">
-            <label class="mr-2" name="img">
+          <div className="form-group mt-3">
+            <label className="mr-2" name="img">
               Upload a image:
             </label>
             <input
@@ -137,7 +137,7 @@ const addEvent = () => {
             />
           </div>
           <hr />
-          <button type="submit" class="btn btn-primary" onClick={submitEvent}>
+          <button type="submit" className="btn btn-primary" onClick={submitEvent}>
             Submit
           </button>
         </div>

@@ -16,9 +16,9 @@ const Contact = () => {
       [name]: value,
     });
   };
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  // };
   const submitQuery = () => {
     // e.preventDefault();
     axios
@@ -44,7 +44,8 @@ const Contact = () => {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.1600870883703!2d77.01711021502182!3d28.594973882432758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1aafdb891567%3A0x10d270731c930a87!2sGuru%20Gobind%20Singh%20Indraprastha%20University!5e0!3m2!1sen!2sin!4v1671401607102!5m2!1sen!2sin"
                   width="100%"
                   height="450"
-                  allowfullscreen=""
+                  title="iframeContact"
+                  // allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
@@ -66,7 +67,7 @@ const Contact = () => {
                         type="text"
                         name="name"
                         placeholder="Enter Your Name"
-                        class="form-control mb-3"
+                        className="form-control mb-3"
                         onChange={handleChange}
                       />
                       <label for="">Email</label>
@@ -74,7 +75,7 @@ const Contact = () => {
                         type="mail"
                         name="email"
                         placeholder="Enter Your Name"
-                        class="form-control mb-3"
+                        className="form-control mb-3"
                         onChange={handleChange}
                       />
                       <label for="">Message</label>

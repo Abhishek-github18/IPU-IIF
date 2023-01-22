@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const NoticeTable = (prop) => {
     // console.log(prop.pdfaddress);
   return (
@@ -7,7 +7,7 @@ const NoticeTable = (prop) => {
     
     <tr>
       <td>
-        <a id={prop.id} href={prop.href} target="_blank">
+        <a key={prop.id} href={prop.href} target="_blank" rel="noopener noreferrer">
           {prop.title}
         </a>
       </td>

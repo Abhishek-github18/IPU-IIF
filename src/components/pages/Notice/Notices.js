@@ -26,11 +26,11 @@ const Notices = () => {
       <Navbar />
       <div className="container mt-3">
         <h2 className="noticeHeading">NOTICES</h2>
-        <div class="table-responsive">
-          <table class="table table-hover">
+        <div className="table-responsive">
+          <table className="table table-hover">
             <thead>
               <tr>
-                <th scope="row" class="bg-dark tableheading">
+                <th scope="row" className="bg-dark tableheading">
                   NOTICES/TITLES
                 </th>
               </tr>

@@ -68,6 +68,7 @@ const EDP = () => {
                 <a
                   href="https://docs.google.com/forms/d/1EpcCDtZxbpq6BuwnVlzwgdhUXl6qz1R_AE5HPlRZMBg/edit"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Link
                 </a>
@@ -77,6 +78,7 @@ const EDP = () => {
                 <a
                   href="http://ipu.ac.in/Pubinfo2022/n0704225%20(3).pdf"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Claim
                 </a>

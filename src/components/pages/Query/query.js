@@ -29,10 +29,10 @@ const query = () => {
       <AdminNavbar />
       <div className="container mt-3">
         <h1>Queries</h1>
-        <div class="table-responsive">
-          <table class="table ">
-            <thead class="table-dark">
-              <tr class="tableheading">
+        <div className="table-responsive">
+          <table className="table ">
+            <thead className="table-dark">
+              <tr className="tableheading">
                 <th scope="col"></th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
@@ -43,6 +43,7 @@ const query = () => {
               {querydata &&
                 querydata.map((data) => (
                   <QueryStructure
+                  id={data.id}
                     name={data.name}
                     email={data.email}
                     message={data.message}

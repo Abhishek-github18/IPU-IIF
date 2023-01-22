@@ -39,7 +39,7 @@ const AddNotices = () => {
       .post("https://ipu-iif.onrender.com/addnotices", noticeform, config)
       .then((res) => {
         // console.log(res.data);
-        navigate("/addevents");
+        navigate("/adminlandingpage");
       })
       .catch((err) => {
         alert(err.response.data);
@@ -54,11 +54,11 @@ const AddNotices = () => {
       <AdminNavbar />
       <div className="container mt-3">
         <h2 className="noticeHeading">NOTICES</h2>
-        <div class="table-responsive">
-          <table class="table table-hover">
+        <div className="table-responsive">
+          <table className="table table-hover">
             <thead>
               <tr>
-                <th scope="row" class="bg-dark tableheading">
+                <th scope="row" className="bg-dark tableheading">
                   NOTICES/TITLES
                 </th>
               </tr>
@@ -78,7 +78,7 @@ const AddNotices = () => {
         </div>
       </div>
       <hr />
-      <div class="col-md-6 offset-md-3 mt-5 container">
+      <div className="col-md-6 offset-md-3 mt-5 container">
         <h2>Add New Notice</h2>
         <div
         // accept-charset="UTF-8"
@@ -87,20 +87,20 @@ const AddNotices = () => {
         // enctype="multipart/form-data"
         // target="_blank"
         >
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Title</label>
+          <div className="form-group">
+            <label >Title</label>
             <input
               type="text"
               name="title"
-              class="form-control"
+              className="form-control"
               placeholder="Enter the title of the notice"
               onChange={handleChange}
               required
             />
           </div>
           <hr />
-          <div class="form-group mt-3">
-            <label class="mr-2">Upload a pdf format file:</label>
+          <div className="form-group mt-3">
+            <label className="mr-2">Upload a pdf format file:</label>
             <input
               type="file"
               name="file"
@@ -109,7 +109,7 @@ const AddNotices = () => {
             />
           </div>
           <hr />
-          <button type="submit" class="btn btn-primary" onClick={submitEvent}>
+          <button type="submit" className="btn btn-primary" onClick={submitEvent}>
             Submit
           </button>
         </div>

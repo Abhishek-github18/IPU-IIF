@@ -6,7 +6,7 @@ const About = () => {
     <div>
       <Navbar />
       <h2>Hello This is About page</h2>
-      <button class="btn btn-primary">Bootstrap Button</button>
+      <button className="btn btn-primary">Bootstrap Button</button>
       <Footer />
     </div>
   );
