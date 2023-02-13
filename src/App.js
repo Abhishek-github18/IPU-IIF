@@ -21,7 +21,7 @@ import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPa
 
 function App() {
   let userToken = localStorage.getItem('user_token');
-  console.log(userToken);
+  // console.log(userToken);
   return (
     <BrowserRouter>
       <Routes>
