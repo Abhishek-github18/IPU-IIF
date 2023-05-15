@@ -17,10 +17,10 @@ import AddPatent from "./components/pages/AddPatent/AddPatent";
 // import Contact01 from "./components/pages/ContactUS/Contact01";
 import Query from "./components/pages/Query/query";
 import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPage";
-import { useState } from "react";
+// import { useState } from "react";
 
 function App() {
-  let userToken = localStorage.getItem('user_token');
+  let userToken = localStorage.getItem("user_token");
   // console.log(userToken);
   return (
     <BrowserRouter>
@@ -36,11 +36,31 @@ function App() {
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/register" element={<RegisterAdmin />} />
         {/* <Route path="/addevents" element={<AddEvent />} /> */}
-        {userToken ?(<Route  path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
-        {userToken ?(<Route path="/addnotices" element={<AddNotices />} />):(<Route path="/addevents" element={<Events />} />) }
-        {userToken ?(<Route key="1" path="/addpatents" element={<AddPatent /> } />):(<Route key="2" path="/addevents" element={<Events />} />)}
-        {userToken ?(<Route path="/queries" element={<Query />} />) : (<Route path="/addevents" element={<Events />} />)}
-        {userToken ?(<Route path="/adminlandingpage" element={<AdminLandingPage/>} />):(<Route path="/adminlandingpage" element={<Home />}/>)}
+        {userToken ? (
+          <Route path="/addevents" element={<AddEvent />} />
+        ) : (
+          <Route path="/addevents" element={<Events />} />
+        )}
+        {userToken ? (
+          <Route path="/addnotices" element={<AddNotices />} />
+        ) : (
+          <Route path="/addevents" element={<Events />} />
+        )}
+        {userToken ? (
+          <Route key="1" path="/addpatents" element={<AddPatent />} />
+        ) : (
+          <Route key="2" path="/addevents" element={<Events />} />
+        )}
+        {userToken ? (
+          <Route path="/queries" element={<Query />} />
+        ) : (
+          <Route path="/addevents" element={<Events />} />
+        )}
+        {userToken ? (
+          <Route path="/adminlandingpage" element={<AdminLandingPage />} />
+        ) : (
+          <Route path="/adminlandingpage" element={<Home />} />
+        )}
       </Routes>
     </BrowserRouter>
   );
