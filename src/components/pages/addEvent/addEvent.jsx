@@ -21,26 +21,36 @@ const addEvent = () => {
   };
   const submitEvent = (e) => {
     // e.preventDefault();
-    const eventForm = new FormData();
-    eventForm.append("title", eventformdetails.title);
-    eventForm.append("content", eventformdetails.content);
-    eventForm.append("image", file);
-    eventForm.append("date", eventformdetails.date);
-    let userToken = localStorage.getItem("user_token");
-    // console.log(userToken);
-    const config = {
-      headers: { "x-access-token": userToken },
-    };
-    axios
-      .post("https://ipu-iif.onrender.com/addevents", eventForm, config)
-      .then((res) => {
-        // console.log(res.data);
-        // alert(res.data);
-        navigate("/adminlandingpage");
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
+    if (
+      eventformdetails.title === "" ||
+      eventformdetails.content === "" ||
+      file === "" ||
+      eventformdetails.date === ""
+    ) {
+      alert("Enter all the values");
+    } else {
+      const eventForm = new FormData();
+      eventForm.append("title", eventformdetails.title);
+      eventForm.append("content", eventformdetails.content);
+      eventForm.append("image", file);
+      eventForm.append("date", eventformdetails.date);
+
+      let userToken = localStorage.getItem("user_token");
+      // console.log(userToken);
+      const config = {
+        headers: { "x-access-token": userToken },
+      };
+      axios
+        .post("https://ipu-iif.onrender.com/addevents", eventForm, config)
+        .then((res) => {
+          // console.log(res.data);
+          // alert(res.data);
+          navigate("/adminlandingpage");
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
   };
 
   const handleChange = (e) => {
@@ -137,7 +147,11 @@ const addEvent = () => {
             />
           </div>
           <hr />
-          <button type="submit" className="btn btn-primary" onClick={submitEvent}>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={submitEvent}
+          >
             Submit
           </button>
         </div>
