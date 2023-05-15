@@ -17,7 +17,7 @@ const Events = () => {
 
   const fetchEventDetails = async () => {
     const response = await axios.get("https://ipu-iif.onrender.com/events");
-    setloading(true);
+    setloading(false);
 
     seteventDetials(response.data);
     // console.log(response.data);
