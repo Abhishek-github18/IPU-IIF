@@ -33,7 +33,7 @@ function App() {
         <Route path="/lab" element={<AICTELAB />} />
         <Route path="/patent" element={<Patents />} />
         <Route path="/notices" element={<Notices />} />
-        <Route path="/login" element={<AdminLogin setUserToken={setToken} />} />
+        <Route path="/login" element={<AdminLogin />} />
         <Route path="/register" element={<RegisterAdmin />} />
         {/* <Route path="/addevents" element={<AddEvent />} /> */}
         {userToken ?(<Route  path="/addevents" element={<AddEvent />} />) : (<Route path="/addevents" element={<Events />} />) }
