@@ -21,15 +21,26 @@ const Contact = () => {
   // };
   const submitQuery = () => {
     // e.preventDefault();
-    axios
-      .post("https://ipu-iif.onrender.com/contact", queryData)
-      .then((res) => {
-        // console.log(res.data);
-        navigate("/");
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
+
+
+    if (
+      queryData.name=== undefined||
+      queryData.email=== undefined||
+      queryData.message===undefined
+    ) {
+      // console.log("What's Up");
+      alert("Fill all the fields");
+    } else {
+      axios
+        .post("https://ipu-iif.onrender.com/contact", queryData)
+        .then((res) => {
+          // console.log(res.data);
+          navigate("/");
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
   };
   return (
     <div>
@@ -62,7 +73,7 @@ const Contact = () => {
                     // method="POST"
                     // action={submitHandler}
                     >
-                      <label >Name</label>
+                      <label>Name</label>
                       <input
                         type="text"
                         name="name"
@@ -70,15 +81,15 @@ const Contact = () => {
                         className="form-control mb-3"
                         onChange={handleChange}
                       />
-                      <label >Email</label>
+                      <label>Email</label>
                       <input
-                        type="mail"
+                        type="email"
                         name="email"
-                        placeholder="Enter Your Name"
+                        placeholder="Enter Your email address"
                         className="form-control mb-3"
                         onChange={handleChange}
                       />
-                      <label >Message</label>
+                      <label>Message</label>
                       <textarea
                         rows="10"
                         name="message"

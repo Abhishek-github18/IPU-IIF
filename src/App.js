@@ -20,9 +20,8 @@ import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPa
 import { useState } from "react";
 
 function App() {
-  const [userToken, setToken] = useState("");
-  // let userToken = localStorage.getItem('user_token');
-  console.log(userToken);
+  let userToken = localStorage.getItem('user_token');
+  // console.log(userToken);
   return (
     <BrowserRouter>
       <Routes>

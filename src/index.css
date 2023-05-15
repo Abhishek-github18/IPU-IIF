@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.loading-container{
+  height : 25rem;
+  display : flex;
+  background-color : #E6FFFD;
+  justify-content : center;
+  align-items : center;
+}
