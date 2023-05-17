@@ -3,7 +3,9 @@ import React from "react";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useState, useEffect } from "react";
 import QueryStructure from "./queryStructure";
-const query = () => {
+
+
+const Query = () => {
   const [querydata, setQuerydata] = useState();
   let serialNo = 0;
   const fetchQueries = async () => {
@@ -58,4 +60,4 @@ const query = () => {
   );
 };
 
-export default query;
+export default Query;

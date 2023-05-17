@@ -24,6 +24,7 @@ const Events = () => {
     // console.log(eventDetials);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchEventDetails();
     // eslint-disable-next-line
   }, []);

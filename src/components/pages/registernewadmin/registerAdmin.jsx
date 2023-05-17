@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const registerAdmin = () => {
+const RegisterAdmin = () => {
   const [currentyear, setcurrentyear] = useState(2023);
 //   console.log(currentyear);
   const [adminData, setAdminData] = useState();
@@ -95,4 +95,4 @@ const onSubmit = ()=>{
   );
 };
 
-export default registerAdmin;
+export default RegisterAdmin;

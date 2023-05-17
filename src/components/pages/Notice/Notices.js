@@ -23,6 +23,8 @@ const Notices = () => {
     // count = 1;
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchNotices();
     // setnoticedata(data.results);
   }, []);

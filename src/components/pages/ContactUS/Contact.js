@@ -4,9 +4,16 @@ import Navbar from "../../inc/Navbar/Navbar";
 import Footer from "../../inc/Footer/footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+// import { useForm } from "react-hook-form";
 
 const Contact = () => {
+  // const form = useForm();
+  // const { register } = form();
+
   const [queryData, setQueryData] = useState({});
+  const [disable, setdisable] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,19 +29,27 @@ const Contact = () => {
   const submitQuery = () => {
     // e.preventDefault();
 
-
     if (
-      queryData.name=== undefined||
-      queryData.email=== undefined||
-      queryData.message===undefined
+      queryData.name === undefined ||
+      queryData.email === undefined ||
+      queryData.message === undefined
     ) {
       // console.log("What's Up");
       alert("Fill all the fields");
     } else {
+      setdisable(1);
       axios
         .post("https://ipu-iif.onrender.com/contact", queryData)
         .then((res) => {
-          // console.log(res.data);
+          if (res.status === 200) {
+            // alert("Query Submitted");
+            swal({
+              title: "Success",
+              text: "Your message has been sent",
+              icon: "success",
+              button: "OK",
+            });
+          }
           navigate("/");
         })
         .catch((err) => {
@@ -80,6 +95,7 @@ const Contact = () => {
                         placeholder="Enter Your Name"
                         className="form-control mb-3"
                         onChange={handleChange}
+                        disabled={disable}
                       />
                       <label>Email</label>
                       <input
@@ -88,9 +104,11 @@ const Contact = () => {
                         placeholder="Enter Your email address"
                         className="form-control mb-3"
                         onChange={handleChange}
+                        disabled={disable}
                       />
                       <label>Message</label>
                       <textarea
+                        disabled={disable}
                         rows="10"
                         name="message"
                         className="form-control mb-3"
@@ -98,9 +116,13 @@ const Contact = () => {
                       ></textarea>
                       <button
                         // type="submit
+                        disabled={disable}
                         className="btn btn-primary w-100"
                         onClick={submitQuery}
                       >
+                        {disable && (
+                          <span className="spinner-grow spinner-grow-sm"></span>
+                        )}
                         Submit
                       </button>
                     </div>

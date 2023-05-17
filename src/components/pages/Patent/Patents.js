@@ -28,6 +28,8 @@ const Patents = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     // console.log(loading);
     fetchPatentGrantData();
     // setloading(false);

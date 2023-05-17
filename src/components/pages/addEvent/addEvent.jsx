@@ -7,7 +7,7 @@ import { EventCard } from "../../inc/EventCard";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useNavigate } from "react-router-dom";
 
-const addEvent = () => {
+const AddEvent = () => {
   const [eventDetials, seteventDetials] = useState();
   const [eventformdetails, setEventformdetails] = useState({});
   const [file, setfile] = useState("");
@@ -159,4 +159,4 @@ const addEvent = () => {
     </div>
   );
 };
-export default addEvent;
+export default AddEvent;

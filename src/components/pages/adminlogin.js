@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const adminlogin = (prop) => {
+const Adminlogin = (prop) => {
   const [currentyear, setcurrentyear] = useState(2023);
   const [user, setuser] = useState({});
   
@@ -108,4 +108,4 @@ const adminlogin = (prop) => {
   );
 };
 
-export default adminlogin;
+export default Adminlogin;
