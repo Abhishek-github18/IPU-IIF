@@ -32,7 +32,7 @@ const Events = () => {
   // Each child in a list should have a unique "key" prop. Check the render method of `Events`
 
   return (
-    <div className="headerFooter eventDivision">
+    <div className="headerFooter eventDivision ">
       <Navbar />
 
       {loading ? (

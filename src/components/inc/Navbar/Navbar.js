@@ -5,7 +5,7 @@ import GGSIPU from "../Navbar/GGSIPU-logo.png";
 //navbar design :- bg-dark navbar-dark
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg sticky-top   py-4" style={{backgroundColor: "#e3f2fd"}}>
+    <nav className="navbar navbar-expand-lg sticky-top    py-4" style={{backgroundColor: "#e3f2fd"}}>
     
       <div className="container navbarContent">
         

@@ -17,6 +17,7 @@ import AddPatent from "./components/pages/AddPatent/AddPatent";
 // import Contact01 from "./components/pages/ContactUS/Contact01";
 import Query from "./components/pages/Query/query";
 import AdminLandingPage from "./components/pages/AdminLandingpage/AdminLandingPage";
+import ScrollToTop from "./components/ScrollToTop";
 // import { useState } from "react";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   // console.log(userToken);
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

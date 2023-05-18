@@ -1,8 +1,11 @@
-.navbar li{
+.navbar li a{
     font-size: 1.2rem;
+    color: #0C134F !important;
 }
+
 .navbar-brand-name{
     font-size: 1.5rem;
+    color:#0C134F;
 }
 .navbarContent{
     font-weight: bold;
@@ -14,4 +17,11 @@
 .navbar-main-ipu-image-container{
     height: 75px;
     margin-right: 30px;
+}
+
+li a:hover{
+    color:white !important;
+    background-color:#0C134F;
+    transition:0.5s ease-in;
+    border-radius: 5px;
 }
