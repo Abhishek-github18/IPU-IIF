@@ -1,10 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.eventDivision{
-    /* background-color: #EEEEEE; */
-    background-image: linear-gradient(45deg,white, #E6FFFD);
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.eventDivision {
+  /* background-color: #EEEEEE; */
+  background-image: linear-gradient(45deg, white, #e6fffd);
 }
-.headerFooter h1{
-    color:#0C134F;
-    font-family: 'Roboto', sans-serif;
-    font-size:4rem;
+.headerFooter h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 4em;
+  text-transform: uppercase;
+  position: relative;
+  color: #ccc;
+  margin:1em;
+}
+.headerFooter h1:before {
+  content: "EVENTS";
+  position: absolute;
+  color: #0C134F;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+h1:hover:before {
+  width: 100%;
 }

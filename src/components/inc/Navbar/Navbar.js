@@ -9,12 +9,12 @@ const Navbar = () => {
     
       <div className="container navbarContent">
         
-        <Link className="navbar-brand" to="/">
+        <div className="navbar-brand" to="/">
         <div className="navbar-main-ipu-image-container">
           <img src={GGSIPU} alt="" className="navbar-image-ipu"/>
         </div>
           <i className="navbar-brand-name">IPU-IIF</i>
-        </Link>
+        </div>
         <button
           className="navbar-toggler"
           type="button"

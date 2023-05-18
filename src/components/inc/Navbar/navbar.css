@@ -19,7 +19,7 @@
     margin-right: 30px;
 }
 
-li a:hover{
+li:hover a{
     color:white !important;
     background-color:#0C134F;
     transition:0.5s ease-in;
