@@ -55,7 +55,7 @@ export const EventCard = (prop) => {
             {/* <p className="card-text">
              <small className="text-muted">{prop.date}</small> 
           </p> */}
-            <a href="#" className="read-more">
+            <a href="https://www.w3schools.com/html/html_links.asp" className="read-more">
               Read more{" "}
               <span className="sr-only">about this is some title</span>
               <svg
