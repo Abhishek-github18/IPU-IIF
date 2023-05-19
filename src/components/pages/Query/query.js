@@ -9,7 +9,7 @@ const Query = () => {
   const [querydata, setQuerydata] = useState();
   let serialNo = 0;
   const fetchQueries = async () => {
-    let userToken = localStorage.getItem("user_token");
+    // let userToken = localStorage.getItem("user_token");
     // console.log(userToken);
     // const config = {
     //   headers: { "x-access-token": userToken },
