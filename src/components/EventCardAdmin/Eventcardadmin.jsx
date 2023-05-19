@@ -21,7 +21,7 @@ const Eventcardadmin = (prop) => {
     }).then((willdelete) => {
       if (willdelete) {
         axios
-          .post("http://localhost:8000/deleteevent", { name: name })
+          .post("https://ipu-iif.onrender.com/deleteevent", { name: name })
           .then((res) => {
             if (res.status === 200) {
               swal("Poof! Blog file has been deleted!", {
