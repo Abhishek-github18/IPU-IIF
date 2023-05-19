@@ -16,8 +16,7 @@ const Query = () => {
     };
 
     const response = await axios.get(
-      "https://ipu-iif.onrender.com/queries",
-      config
+      "https://ipu-iif.onrender.com/queries"
     );
     // console.log(response.data);
     setQuerydata(response.data);

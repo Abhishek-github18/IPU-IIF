@@ -3,9 +3,10 @@ import React from "react";
 import "./addEvent.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { EventCard } from "../../inc/EventCard";
+// import { EventCard } from "../../inc/EventCard";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useNavigate } from "react-router-dom";
+import Eventcardadmin from "../../EventCardAdmin/Eventcardadmin";
 
 const AddEvent = () => {
   const [eventDetials, seteventDetials] = useState();
@@ -65,14 +66,15 @@ const AddEvent = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div>
+    <div className="addevent-container">
       <AdminNavbar />
-      <h1>EVENTS</h1>
+      <h1 style={{fontSize:"4em"}}>EVENTS</h1>
       <div className="row container">
         {eventDetials &&
           eventDetials.map((e) => (
-            <EventCard
+            <Eventcardadmin
               key={`key${e._id}`}
+              id={e._id}
               imgsrc={e.image}
               // contentType={e.img.contentType}
               title={e.title}

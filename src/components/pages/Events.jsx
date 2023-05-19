@@ -47,7 +47,7 @@ const Events = () => {
         </div>
       ) : (
         <>
-          <h1>EVENTS</h1>
+          <h1 className="eventHeading">EVENTS</h1>
           <div className="row container">
             {eventDetials &&
               eventDetials.map((e) => (

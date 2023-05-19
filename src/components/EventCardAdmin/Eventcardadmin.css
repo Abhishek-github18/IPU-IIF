@@ -1,0 +1,47 @@
+/* :root {
+    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+  } */
+
+.event-admin-card {
+  background: #e6fffd;
+  border: 1px solid #0c134f;
+  color: 0C134F;
+  margin-bottom: 2rem;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  
+  figure img {
+    max-width: 100%;
+    transform-origin: center;
+    transform: scale(var(--img-scale));
+    transition: transform 0.4s ease-in-out;
+  }
+
+.event-btn {
+  border: 0.1em solid;
+  border-image-slice: 1;
+  background: black !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-image-source: #0c134f !important;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.m{
+    margin-right: 1rem;
+}
+.event-btn:hover,
+.event-btn:focus {
+  background: #0c134f !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 5px solid #fff !important;
+  box-shadow: #222 1px 0 10px;
+  text-decoration: underline;
+}
