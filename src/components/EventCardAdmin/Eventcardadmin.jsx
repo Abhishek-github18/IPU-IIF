@@ -53,7 +53,7 @@ const Eventcardadmin = (prop) => {
             <h5 className="card-title">{prop.title}</h5>
             {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6> */}
             <p className="card-text">{prop.content}</p>
-            <a href="#" className="btn m event-btn">
+            <a href="https://getbootstrap.com/docs/5.3/content/tables/" className="btn m event-btn">
               <i className="fas fa-link"></i> Read More
             </a>
             <button

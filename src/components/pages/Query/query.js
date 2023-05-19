@@ -11,9 +11,9 @@ const Query = () => {
   const fetchQueries = async () => {
     let userToken = localStorage.getItem("user_token");
     // console.log(userToken);
-    const config = {
-      headers: { "x-access-token": userToken },
-    };
+    // const config = {
+    //   headers: { "x-access-token": userToken },
+    // };
 
     const response = await axios.get(
       "https://ipu-iif.onrender.com/queries"
