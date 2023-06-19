@@ -1,0 +1,16 @@
+.btn-success:hover{
+background-color:red;
+transform: scale(1.1); 
+}
+
+.btn-success::before {
+    content: 'Not resolved';
+  }
+  
+  .btn-success:hover::before {
+    content: 'Click if resolved';
+   
+  }
+  .btn-success {
+    transition: transform 0.3s;
+  }

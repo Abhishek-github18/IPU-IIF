@@ -7,7 +7,7 @@ const AdminNavbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg sticky-top  py-4" style={{backgroundColor: "#e3f2fd"}}>
       <div className="container navbarContent">
-        <Link className="navbar-brand" to="/adminlandingpage">
+        <Link className="navbar-brand" to="/admindashboard">
         <div className="navbar-main-ipu-image-container">
           <img src={GGSIPU} alt="" className="navbar-image-ipu"/>
         </div>

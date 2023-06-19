@@ -52,6 +52,7 @@ const Events = () => {
             {eventDetials &&
               eventDetials.map((e) => (
                 <EventCard
+                  id={e._id}
                   key={`key${e._id}`}
                   imgsrc={e.image}
                   title={e.title}

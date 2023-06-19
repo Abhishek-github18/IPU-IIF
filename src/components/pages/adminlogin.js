@@ -1,14 +1,19 @@
 import React from "react";
 import "./adminlogin.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { data } from "../../context/DataProvider";
 
-const Adminlogin = (prop) => {
+const Adminlogin = ({
+  setUserAuthentication,
+  ...prop
+}) => {
   const [currentyear, setcurrentyear] = useState(2023);
   const [user, setuser] = useState({});
-  
+  const { setAccount } = useContext(data);
+
   const navigate = useNavigate();
   // console.log(currentyear);
 
@@ -20,18 +25,29 @@ const Adminlogin = (prop) => {
   const login = () => {
     // console.log("Heyyy I am in");
     axios
-      .post("https://ipu-iif.onrender.com/login", user)
+      .post("http://localhost:8000/login", user)
       .then((res) => {
-        // alert(JSON.stringify(res.data));
-        // console.log(res.data);
-        localStorage.setItem("user_token", res.data);
-        prop.setUserToken(res.data);
-
-        // setLoginUser(res.data);
-        navigate("/adminlandingpage");
+        
+        console.log("Token : ", res.data);
+        // prop.setUserToken(res.data);
+        sessionStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
+                if (res.data != null) {
+        
+          setAccount({
+            username: res.data.email,
+          });
+        }
+                // setLoginUser(res.data);
+        setUserAuthentication(true);
+        navigate("/admindashboard");
       })
       .catch((err) => {
-        alert(err.response.data);
+        if (err.response && err.response.data) {
+          alert(err.response.data);
+        } else {
+          console.log(err);
+          alert("An error occurred during login.");
+        }
       });
   };
   const handleChange = (e) => {
@@ -42,7 +58,7 @@ const Adminlogin = (prop) => {
     });
   };
 
-  console.log(currentyear);
+  // console.log(currentyear);
   return (
     <div className="text-center mt-5">
       <div className="form-signin">

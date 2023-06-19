@@ -2,8 +2,8 @@ import axios from "axios";
 import React from "react";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useState, useEffect } from "react";
-import QueryStructure from "./queryStructure";
-
+import QueryStructure from "./QueryStructure";
+import { Watch } from "react-loader-spinner";
 
 const Query = () => {
   const [querydata, setQuerydata] = useState();
@@ -15,11 +15,22 @@ const Query = () => {
     //   headers: { "x-access-token": userToken },
     // };
 
-    const response = await axios.get(
-      "https://ipu-iif.onrender.com/queries"
-    );
-    // console.log(response.data);
-    setQuerydata(response.data);
+    try {
+      const response = await axios.get("http://localhost:8000/queries", {
+        headers: { Authorization: sessionStorage.getItem("accessToken") },
+      });
+      setQuerydata(response.data);
+      if (response.data !== null) {
+        const filteredQuery = response.data.filter((query) => {
+          return query.resolve === false;
+        });
+        setQuerydata(filteredQuery);
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err.message);
+      return;
+    }
   };
   useEffect(() => {
     fetchQueries();
@@ -38,19 +49,33 @@ const Query = () => {
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Message</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              {querydata &&
+              {querydata ? (
                 querydata.map((data) => (
                   <QueryStructure
-               key={`key${data._id}`}
+                    key={`key${data._id}`}
                     name={data.name}
                     email={data.email}
                     message={data.message}
                     count={++serialNo}
+                    id={data._id}
                   />
-                ))}
+                ))
+              ) : (
+                <Watch
+                  height="150"
+                  width="1100"
+                  radius="48"
+                  color="#0c134f"
+                  ariaLabel="watch-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              )}
             </tbody>
           </table>
         </div>

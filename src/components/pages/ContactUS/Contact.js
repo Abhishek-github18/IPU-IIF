@@ -34,12 +34,24 @@ const Contact = () => {
       queryData.email === undefined ||
       queryData.message === undefined
     ) {
+      // alert("Fill all the fields");
       // console.log("What's Up");
-      alert("Fill all the fields");
+      swal({
+        title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "All fields are mandatory to fill",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
+      });
     } else {
       setdisable(1);
       axios
-        .post("https://ipu-iif.onrender.com/contact", queryData)
+        .post("http://localhost:8000/contact", queryData)
         .then((res) => {
           if (res.status === 200) {
             // alert("Query Submitted");
@@ -79,7 +91,7 @@ const Contact = () => {
               <div className="col-md-6 contact-us-form">
                 <div className="card shadow contact-us-form ">
                   <span className="ideaheading">
-                    <strong>Send Your Queries</strong>
+                    <strong>Contact us</strong>
                   </span>
                   <div className="card-body py-3 contact-us-form ">
                     {/* <div className="underline-mb-3"></div> */}

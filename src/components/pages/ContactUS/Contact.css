@@ -2,21 +2,27 @@
   /* text-align: center; */
   font-size: 2rem;
   padding-bottom: 4rem;
-  background-color: #F1F6F9;
+  background-color: #f1f6f9;
 }
 
-.contact-us-form{
-  background-color: #F0F5F9;
+.contact-us-form {
+  background-color: #f0f5f9;
   height: 740px;
 }
-.ideaheading{
+.ideaheading {
   display: inline;
-  background-color: #9BA4B4;
-  color: rgba(0, 0, 0, 0.94);
+  background-color: #ecf8f9;
+  color: #0c134f;
   font-size: 3rem;
   text-align: center;
+  color: #0000;
+  background: linear-gradient(90deg, white 50%, #0c134f 0) var(--_p, 100%) /
+      200%,
+    linear-gradient(90deg, white 50%, #0c134f 0) var(--_c, 0%) / 200% no-repeat;
+  -webkit-background-clip: text, padding-box;
+  background-clip: text, padding-box;
+  transition: 0.4s;
   /* margin-top: 2rem; */
-
 }
 input,
 textarea {
@@ -39,4 +45,12 @@ input[type="submit"] {
 }
 iframe {
   height: 45.5rem;
+}
+//hovering effect on form
+.ideaheading {
+}
+.ideaheading:hover {
+  --_p: 0%;
+  --_c: 100%;
+  border-radius: 0.25rem;
 }

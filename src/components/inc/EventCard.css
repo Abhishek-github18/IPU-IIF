@@ -47,18 +47,19 @@ figure img {
   /* background-color : #D4FAFC; */
 }
 
-article a {
+article .read-more {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   color: #28666e;
+  border-radius: 1.5rem;
 }
 
-article a:focus {
+article .read-more:focus {
   outline: 1px dotted #28666e;
 }
 
-article a .icon {
+article .read-more .icon {
   min-width: 24px;
   width: 24px;
   height: 24px;
@@ -124,7 +125,7 @@ article:has(:hover, :focus) {
   white-space: nowrap;
   width: 1px;
 }
-a:hover {
+.read-more:hover {
   background-color: #0a2647;
   border-radius: 2.5px;
   color: white;

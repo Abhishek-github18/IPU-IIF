@@ -1,17 +1,18 @@
 import React from "react";
-// import Events from "../Events";
+import Swal from "sweetalert";
 import "./addEvent.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import { EventCard } from "../../inc/EventCard";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useNavigate } from "react-router-dom";
 import Eventcardadmin from "../../EventCardAdmin/Eventcardadmin";
+import { Watch } from "react-loader-spinner";
 
 const AddEvent = () => {
   const [eventDetials, seteventDetials] = useState();
   const [eventformdetails, setEventformdetails] = useState({});
   const [file, setfile] = useState("");
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
 
   const fetchEventDetails = async () => {
@@ -28,25 +29,37 @@ const AddEvent = () => {
       file === "" ||
       eventformdetails.date === ""
     ) {
-      alert("Enter all the values");
+      Swal({
+        title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "All fields are mandatory to fill",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
+      });
     } else {
+      setDisable(1);
       const eventForm = new FormData();
       eventForm.append("title", eventformdetails.title);
       eventForm.append("content", eventformdetails.content);
       eventForm.append("image", file);
       eventForm.append("date", eventformdetails.date);
 
-      let userToken = localStorage.getItem("user_token");
+      let userToken = sessionStorage.getItem("accessToken");
       // console.log(userToken);
       const config = {
-        headers: { "x-access-token": userToken },
+        headers: { Authorization: userToken },
       };
       axios
         .post("https://ipu-iif.onrender.com/addevents", eventForm, config)
         .then((res) => {
           // console.log(res.data);
           // alert(res.data);
-          navigate("/adminlandingpage");
+          navigate("/admindashboard");
         })
         .catch((err) => {
           alert(err.response.data);
@@ -68,9 +81,9 @@ const AddEvent = () => {
   return (
     <div className="addevent-container">
       <AdminNavbar />
-      <h1 style={{fontSize:"4em"}}>EVENTS</h1>
+      <h1 style={{ fontSize: "4em" }}>EVENTS</h1>
       <div className="row container">
-        {eventDetials &&
+        {eventDetials ? (
           eventDetials.map((e) => (
             <Eventcardadmin
               key={`key${e._id}`}
@@ -81,18 +94,24 @@ const AddEvent = () => {
               content={e.content}
               date={e.date}
             />
-          ))}
+          ))
+        ) : (
+          <Watch
+            height="150"
+            width="1100"
+            radius="48"
+            color="#0c134f"
+            ariaLabel="watch-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
+        )}
       </div>
       <hr />
       <h2 className="text-center">Add new Event Details</h2>
       <div className="col-md-6 offset-md-3 mt-5">
-        <div
-        // accept-charset="UTF-8"
-        //   action="/addevents"
-        // method="POST"
-        // enctype="multipart/form-data"
-        //   target="_blank"
-        >
+        <div>
           <div className="form-group mb-2">
             <label htmlFor="exampleInputName" className="mb-1">
               Title
@@ -101,6 +120,7 @@ const AddEvent = () => {
               type="text"
               name="title"
               className="form-control"
+              disabled={disable}
               id="exampleInputName"
               placeholder="Enter the title and it must be unique"
               required="required"
@@ -118,6 +138,7 @@ const AddEvent = () => {
             <input
               type="text"
               name="content"
+              disabled={disable}
               className="form-control"
               id="exampleInputEmail1"
               onChange={handleChange}
@@ -131,6 +152,7 @@ const AddEvent = () => {
             <input
               type="text"
               name="date"
+              disabled={disable}
               className="form-control"
               onChange={handleChange}
               id="exampleInputEmail1"
@@ -145,15 +167,18 @@ const AddEvent = () => {
             <input
               type="file"
               name="image"
+              disabled={disable}
               onChange={(e) => setfile(e.target.files[0])}
             />
           </div>
           <hr />
           <button
+            disabled={disable}
             type="submit"
             className="btn btn-primary"
             onClick={submitEvent}
           >
+            {disable && <span className="spinner-grow spinner-grow-sm"></span>}
             Submit
           </button>
         </div>

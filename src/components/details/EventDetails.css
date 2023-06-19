@@ -1,0 +1,39 @@
+.post-title{
+    display: flex;
+    justify-content: space-between;
+}
+.image-post-container{
+    border: 0.1rem solid #0C134F;
+    width : 50vw;
+    object-fit: contain;
+    overflow: hidden;
+    /* margin: auto; */
+}
+.image-post-container:hover{
+    box-shadow: 10px 10px 20px #888;
+    border: 0.2rem solid #0C134F;
+}
+.post-title p{
+    color: #0C134F;
+}
+.post-title{
+    font-size: 2rem !important;
+}
+.post-title p{
+    color:#0000;
+   background: 
+     linear-gradient(90deg,white 50%,#0C134F 0) 
+     var(--_p,100%)/200%,
+     linear-gradient(90deg,white 50%,#0C134F 0) 
+     var(--_c,0%)/200%
+     no-repeat;
+   -webkit-background-clip: text,padding-box;
+           background-clip: text,padding-box;
+   transition: .4s;
+   
+ }
+ .post-title p:hover {
+  --_p: 0%;
+ --_c: 100%;
+ border-radius : 0.25rem;
+ }

@@ -1,39 +1,99 @@
-/* :root {
-	--depth: 500px;
-	--turnLeft: 0.06turn;
-	--turnRight: -0.06turn;
-	--turn: var(--turnRight);
+.welcomeAdminMessage{
+  display: inline-block;
+  font-family: "arial";
+  font-size: 24px;
+  margin:5rem;
 }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+.typed {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing;
+  animation-duration: 1.5s;
+  animation-timing-function: steps(30, end);
+  animation-fill-mode: forwards;
+}
+  
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
 
-html {
-	height: 100%;
-	overflow: hidden;
+//cards style of the dashboard card 
+.cardContainerAdmin {
+  background: #24282f;
+  font-family: 'Open Sans', sans-serif;
+}
+.cardContainerAdmin{
+  display:flex;
+  flex-wrap:wrap;
+  min-height:(100vh-4rem);
+}
+/* Assigning general property to card */
+.cardAdmin {
+  cursor:pointer;
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5vw;
+  background-size: cover;
+  background-color: #000;
+  border-radius: 20px;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.card1{
+  background-image: url(https://lh4.googleusercontent.com/cfRtMDxFblapv-bT9aRIwzn41USahrRpfBnzoq7qkKSoCU199OVJ3vxtgHAzrkns2tc-a512tOJzjX_GBTFRroA=w16383);
+}
+.card2{
+  background-image: url(https://media.istockphoto.com/id/1422564173/photo/man-adding-a-block-showing-the-words-intellectual-property-on-top-of-other-wooden-block-with.webp?b=1&s=170667a&w=0&k=20&c=irL4XOn0EfmCSDVJwlHeAy-3fujfPWMOB5XQVTVDfb0=)
 }
 
-body {
-	height: 100%;
-	overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-	background: hsl(0 0% 10%);
-	perspective: 1000px;
-	perspective-origin: 50% 35%;
-} */
-.building{
-    background-color: #8EC5FC;
-    height: 40vw;
-    margin-bottom: 0;
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+.card3{
+  background-image:url(https://media.istockphoto.com/id/617893290/photo/modern-keyboard-wih-contact-us-button.webp?b=1&s=170667a&w=0&k=20&c=-Q5a_-xW3RArX85DyCV1LQazZw0BuodPOY_euUNxiK0=)
 }
-.adminpage{
-    font-size: 5vw;
-    text-align: center;
-    padding-top: 10%;
+.card4{
+  background-image:url(https://drive.google.com/thumbnail?authuser=0&id=12xN3IRXlXO_DWm89IFQtL6QKQpZMEJAp&sz=w1469-h456-p-k-nu)
+}
+
+.cardAdmin ::-webkit-scrollbar {
+  display: none
+}
+
+/* Assigning properties to inner content of card */
+.card__inner {
+  background-color: rgba(17, 25, 40, .85);
+  color: #fff;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  opacity: 0;
+  padding: 2rem 1.3rem 2rem 2rem;
+  transition: all 0.4s ease 0s;
+}
+
+/* On hovering card opacity of content must be 1*/
+.cardAdmin:hover .card__inner {
+  opacity: 1;
+}
+
+/* General property for heading and paragraph*/
+.card__inner h2 {
+  margin-top: 1rem;
+}
+
+.card__inner p {
+  overflow-y: scroll;
+  height: 87%;
+  padding-right: 1rem;
+  font-weight: 200;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
 }

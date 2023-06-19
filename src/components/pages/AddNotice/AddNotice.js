@@ -3,11 +3,14 @@ import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NoticeTable from "../Notice/NoticeTable";
+import NoticeTableAdmin from "./NoticeTableAdmin";
+import { Watch } from "react-loader-spinner";
+import swal from "sweetalert";
 
 const AddNotices = () => {
   const [pdfFileDetails, setpdfFileDetails] = useState();
   const [noticedetails, setNoticedetails] = useState();
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
 
   const [noticedata, setnoticedata] = useState();
@@ -25,25 +28,40 @@ const AddNotices = () => {
   }, []);
 
   const submitEvent = (e) => {
-    const noticeform = new FormData();
-    noticeform.append("title", noticedetails);
-    noticeform.append("pdf", pdfFileDetails);
-
-    let userToken = localStorage.getItem("user_token");
-    // console.log(userToken);
-    const config = {
-      headers: { "x-access-token": userToken },
-    };
-
-    axios
-      .post("https://ipu-iif.onrender.com/addnotices", noticeform, config)
-      .then((res) => {
-        // console.log(res.data);
-        navigate("/adminlandingpage");
-      })
-      .catch((err) => {
-        alert(err.response.data);
+    if (noticedetails === undefined || pdfFileDetails === undefined) {
+      swal({
+        title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "All fields are mandatory to fill",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
       });
+    } else {
+      // debugger
+      const noticeform = new FormData();
+      noticeform.append("title", noticedetails);
+      noticeform.append("pdf", pdfFileDetails);
+
+      let userToken = sessionStorage.getItem("accessToken");
+      const config = {
+        headers: { Authorization: userToken },
+      };
+      setDisable(1);
+      axios
+        .post("https://ipu-iif.onrender.com/addnotices", noticeform, config)
+        .then((res) => {
+          // console.log(res.data);
+          navigate("/adminlandingpage");
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
   };
   const handleChange = (e) => {
     setNoticedetails(e.target.value);
@@ -64,15 +82,28 @@ const AddNotices = () => {
               </tr>
             </thead>
             <tbody>
-              {noticedata &&
+              {noticedata ? (
                 noticedata.map((e) => (
-                  <NoticeTable
+                  <NoticeTableAdmin
+                    id={e._id}
                     key={`key${e._id}`}
                     href={e.pdfaddress}
                     title={e.title}
                     count={++count}
                   />
-                ))}
+                ))
+              ) : (
+                <Watch
+                  height="150"
+                  width="1100"
+                  radius="48"
+                  color="#0c134f"
+                  ariaLabel="watch-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              )}
             </tbody>
           </table>
         </div>
@@ -80,17 +111,12 @@ const AddNotices = () => {
       <hr />
       <div className="col-md-6 offset-md-3 mt-5 container">
         <h2>Add New Notice</h2>
-        <div
-        // accept-charset="UTF-8"
-        // action="https://getform.io/f/{your-form-endpoint-goes-here}"
-        // method="POST"
-        // enctype="multipart/form-data"
-        // target="_blank"
-        >
+        <div>
           <div className="form-group">
-            <label >Title</label>
+            <label>Title</label>
             <input
               type="text"
+              disabled={disable}
               name="title"
               className="form-control"
               placeholder="Enter the title of the notice"
@@ -104,12 +130,19 @@ const AddNotices = () => {
             <input
               type="file"
               name="file"
+              disabled={disable}
               onChange={(e) => setpdfFileDetails(e.target.files[0])}
               required
             />
           </div>
           <hr />
-          <button type="submit" className="btn btn-primary" onClick={submitEvent}>
+          <button
+            type="submit"
+            disabled={disable}
+            className="btn btn-primary"
+            onClick={submitEvent}
+          >
+            {disable && <span className="spinner-grow spinner-grow-sm"></span>}
             Submit
           </button>
         </div>

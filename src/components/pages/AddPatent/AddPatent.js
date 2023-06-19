@@ -1,20 +1,23 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AdminNavbar from "../../inc/AdminNavbar/AdminNavbar";
 import "./AddPatent.css";
 import PatentRowStructure from "../Patent/PatentRowStructure";
+import { Watch } from "react-loader-spinner";
+import swal from "sweetalert";
 
 const AddPatent = () => {
   let serialNo = 0;
   const [certificate01, setCertificate] = useState();
-  const [patentDetails, setPatentDetails] = useState();
+  const [patentDetails, setPatentDetails] = useState({});
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   const [patentgrantdata, setpatentgrantdata] = useState();
 
   const fetchPatentGrantData = async () => {
     const response = await axios.get("https://ipu-iif.onrender.com/patents");
-    console.log(response.data);
+    // console.log(response.data);
     setpatentgrantdata(response.data);
   };
 
@@ -30,25 +33,47 @@ const AddPatent = () => {
     });
   };
   const submitPatent = (e) => {
-    const patent = new FormData();
-    patent.append("patentGrantDate", patentDetails.patentGrantDate);
-    patent.append("patentee", patentDetails.patentee);
-    patent.append("patentNo", patentDetails.patentNo);
-    patent.append("certificate", certificate01);
-    let userToken = localStorage.getItem("user_token");
-    // console.log(userToken);
-    const config = {
-      headers: { "x-access-token": userToken },
-    };
-    axios
-      .post("https://ipu-iif.onrender.com/addpatents", patent, config)
-      .then((res) => {
-        console.log(res.data);
-        navigate("/adminlandingpage");
-      })
-      .catch((err) => {
-        alert(err.response.data);
+    if (
+      patentDetails === undefined ||
+      patentDetails.patentGrantDate === undefined ||
+      patentDetails.patentee === "" ||
+      patentDetails.patentNo === "" ||
+      certificate01 === ""
+    ) {
+      swal({
+        title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "All fields are mandatory to fill",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
       });
+    } else {
+      const patent = new FormData();
+      patent.append("patentGrantDate", patentDetails.patentGrantDate);
+      patent.append("patentee", patentDetails.patentee);
+      patent.append("patentNo", patentDetails.patentNo);
+      patent.append("certificate", certificate01);
+      let userToken = sessionStorage.getItem("accessToken");
+      // console.log(userToken);
+      //eslint-disable-next-line
+      const config = {
+        headers: { Authorization: userToken },
+      };
+      setDisable(1);
+      axios
+        .post("https://ipu-iif.onrender.com/addpatents", patent, config)
+        .then((res) => {
+          navigate("/adminlandingpage");
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
   };
 
   return (
@@ -69,7 +94,7 @@ const AddPatent = () => {
               </tr>
             </thead>
             <tbody>
-              {patentgrantdata &&
+              {patentgrantdata ? (
                 patentgrantdata.map((data) => (
                   <PatentRowStructure
                     key={`key${data._id}`}
@@ -79,7 +104,19 @@ const AddPatent = () => {
                     href={data.certificate}
                     count={++serialNo}
                   />
-                ))}
+                ))
+              ) : (
+                <Watch
+                  height="150"
+                  width="1100"
+                  radius="48"
+                  color="#0c134f"
+                  ariaLabel="watch-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              )}
             </tbody>
           </table>
         </div>
@@ -98,6 +135,7 @@ const AddPatent = () => {
               Patentee Name
             </label>
             <input
+              disabled={disable}
               type="text"
               name="patentee"
               className="form-control"
@@ -108,10 +146,11 @@ const AddPatent = () => {
             />
           </div>
           <div className="form-group mt-3">
-            <label  required="required" className="mb-1">
+            <label required="required" className="mb-1">
               Patent No.
             </label>
             <input
+              disabled={disable}
               type="text"
               name="patentNo"
               className="form-control"
@@ -123,6 +162,7 @@ const AddPatent = () => {
           <div className="form-group mt-3">
             <label className="mb-1">Patent Grant Date</label>
             <input
+              disabled={disable}
               type="text"
               name="patentGrantDate"
               className="form-control"
@@ -134,13 +174,20 @@ const AddPatent = () => {
           <div className="form-group mt-3 mt-3 mb-1">
             <label className="mr-2">Upload a certificate (pdf format) :</label>
             <input
+              disabled={disable}
               type="file"
               name="certificate"
               onChange={(e) => setCertificate(e.target.files[0])}
             />
           </div>
           <hr />
-          <button type="submit" className="btn btn-primary" onClick={submitPatent}>
+          <button
+            disabled={disable}
+            type="submit"
+            className="btn btn-primary"
+            onClick={submitPatent}
+          >
+            {disable && <span className="spinner-grow spinner-grow-sm"></span>}
             Submit
           </button>
         </div>
