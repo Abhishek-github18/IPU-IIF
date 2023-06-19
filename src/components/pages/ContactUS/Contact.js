@@ -51,7 +51,7 @@ const Contact = () => {
     } else {
       setdisable(1);
       axios
-        .post("http://localhost:8000/contact", queryData)
+        .post("https://ipu-iif.onrender.com/contact", queryData)
         .then((res) => {
           if (res.status === 200) {
             // alert("Query Submitted");

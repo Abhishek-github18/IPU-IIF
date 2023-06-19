@@ -12,7 +12,7 @@ const EventDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await axios.get(`http://localhost:8000/eventdetail/${id}`);
+      const data = await axios.get(`https://ipu-iif.onrender.com/eventdetail/${id}`);
       // console.log(data.data);
       setpost(data.data);
     };

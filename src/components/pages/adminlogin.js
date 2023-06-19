@@ -25,7 +25,7 @@ const Adminlogin = ({
   const login = () => {
     // console.log("Heyyy I am in");
     axios
-      .post("http://localhost:8000/login", user)
+      .post("https://ipu-iif.onrender.com/login", user)
       .then((res) => {
         
         console.log("Token : ", res.data);

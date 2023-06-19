@@ -22,7 +22,7 @@ const QueryStructure = (prop) => {
         try {
           axios
             .post(
-              `http://localhost:8000/queries/${e.target.value}`,
+              `https://ipu-iif.onrender.com/queries/${e.target.value}`,
               {
                 username: account.username,
               },
