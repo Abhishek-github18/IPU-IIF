@@ -5,15 +5,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { data } from "../../context/DataProvider";
+import swal from "sweetalert";
 
-const Adminlogin = ({
-  setUserAuthentication,
-  ...prop
-}) => {
+const Adminlogin = ({ setUserAuthentication, ...prop }) => {
   const [currentyear, setcurrentyear] = useState(2023);
   const [user, setuser] = useState({});
   const { setAccount } = useContext(data);
-
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   // console.log(currentyear);
 
@@ -23,32 +21,75 @@ const Adminlogin = ({
   }, []);
 
   const login = () => {
+    if (!user || !user.email || !user.password) {
+      swal({
+        title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "All fields are mandatory to fill",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
+      });
+      return;
+    }
+    setDisable(true);
     // console.log("Heyyy I am in");
     axios
-      .post("https://ipu-iif.onrender.com/login", user)
+      .post("http://localhost:8000/login", user)
       .then((res) => {
-        
-        console.log("Token : ", res.data);
+        console.log(res.status);
+        // console.log("Token : ", res.data);
         // prop.setUserToken(res.data);
         sessionStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
-                if (res.data != null) {
-        
+        if (res.data != null) {
           setAccount({
             username: res.data.email,
           });
         }
-                // setLoginUser(res.data);
+        // setLoginUser(res.data);
         setUserAuthentication(true);
         navigate("/admindashboard");
       })
       .catch((err) => {
         if (err.response && err.response.data) {
-          alert(err.response.data);
-        } else {
           console.log(err);
-          alert("An error occurred during login.");
+          // alert(err.response.data.message);
+          swal({
+            title: "Error!",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            text: err.response.data.message,
+            icon: "error",
+            confirmButtonText: "Go Back",
+            customClass: {
+              container: "swal-container",
+              text: "swal-text",
+            },  
+          })
+          navigate("/admindashboard");
+        } else {
+          swal({
+            title: "Error!",
+        dangerMode: true,
+        closeOnClickOutside: false,
+        text: "An error occured while loggin in",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        customClass: {
+          container: "swal-container",
+          text: "swal-text",
+        },
+          })
+          // alert("An error occurred during login.");
+          navigate("/admindashboard");
         }
       });
+      // setDisable(false);
+
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,6 +124,7 @@ const Adminlogin = ({
           placeholder="Email address"
           required
           value={user.email}
+          disabled={disable}
           onChange={handleChange}
           autoFocus
         />
@@ -94,6 +136,7 @@ const Adminlogin = ({
           id="inputPassword"
           className="form-control"
           name="password"
+          disabled={disable}
           placeholder="Password"
           value={user.password}
           onChange={handleChange}
@@ -112,6 +155,7 @@ const Adminlogin = ({
           type="submit"
           onClick={login}
         >
+        {disable && <span className="spinner-grow spinner-grow-sm"></span>}
           Sign in
         </button>
         <p className="mt-3">
