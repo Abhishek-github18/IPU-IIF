@@ -39,7 +39,7 @@ const Adminlogin = ({ setUserAuthentication, ...prop }) => {
     setDisable(true);
     // console.log("Heyyy I am in");
     axios
-      .post("http://localhost:8000/login", user)
+      .post("https://ipu-iif.onrender.com/login", user)
       .then((res) => {
         console.log(res.status);
         // console.log("Token : ", res.data);
@@ -68,28 +68,27 @@ const Adminlogin = ({ setUserAuthentication, ...prop }) => {
             customClass: {
               container: "swal-container",
               text: "swal-text",
-            },  
-          })
+            },
+          });
           navigate("/admindashboard");
         } else {
           swal({
             title: "Error!",
-        dangerMode: true,
-        closeOnClickOutside: false,
-        text: "An error occured while loggin in",
-        icon: "error",
-        confirmButtonText: "Go Back",
-        customClass: {
-          container: "swal-container",
-          text: "swal-text",
-        },
-          })
+            dangerMode: true,
+            closeOnClickOutside: false,
+            text: "An error occured while loggin in",
+            icon: "error",
+            confirmButtonText: "Go Back",
+            customClass: {
+              container: "swal-container",
+              text: "swal-text",
+            },
+          });
           // alert("An error occurred during login.");
           navigate("/admindashboard");
         }
       });
-      // setDisable(false);
-
+    // setDisable(false);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -155,7 +154,7 @@ const Adminlogin = ({ setUserAuthentication, ...prop }) => {
           type="submit"
           onClick={login}
         >
-        {disable && <span className="spinner-grow spinner-grow-sm"></span>}
+          {disable && <span className="spinner-grow spinner-grow-sm"></span>}
           Sign in
         </button>
         <p className="mt-3">
