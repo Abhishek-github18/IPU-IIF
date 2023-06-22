@@ -16,7 +16,7 @@ const Query = () => {
     // };
 
     try {
-      const response = await axios.get("http://localhost:8000/queries", {
+      const response = await axios.get("https://ipu-iif.onrender.com/queries", {
         headers: { Authorization: sessionStorage.getItem("accessToken") },
       });
       setQuerydata(response.data);
